@@ -19,6 +19,42 @@ export default function App() {
 
   const buttonClick = (box) => {
 
+    if(box == 1 && box1 == "1") {
+      setBox1(mark)
+      setMark((mark == player1) ? player2 : player1)
+    }
+    else if(box == 2 && box2 == "2") {
+      setBox2(mark)
+      setMark((mark == player1) ? player2 : player1)
+    }
+    else if(box == 3 && box3 == "3") {
+      setBox3(mark)
+      setMark((mark == player1) ? player2 : player1)
+    }
+    else if(box == 4 && box4 == "4") {
+      setBox4(mark)
+      setMark((mark == player1) ? player2 : player1)
+    }
+    else if(box == 5 && box5 == "5") {
+      setBox5(mark)
+      setMark((mark == player1) ? player2 : player1)
+    }
+    else if(box == 6 && box6 == "6") {
+      setBox6(mark)
+      setMark((mark == player1) ? player2 : player1)
+    }
+    else if(box == 7 && box7 == "7") {
+      setBox7(mark)
+      setMark((mark == player1) ? player2 : player1)
+    }
+    else if(box == 8 && box8 == "8") {
+      setBox8(mark)
+      setMark((mark == player1) ? player2 : player1)
+    }
+    else if(box == 9 && box9 == "9") {
+      setBox9(mark)
+      setMark((mark == player1) ? player2 : player1)
+    }
   }
 
   return (
