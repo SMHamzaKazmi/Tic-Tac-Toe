@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View, Pressable } from 'react-native';
 
 export default function App() {
@@ -16,6 +16,7 @@ export default function App() {
   const[box7,setBox7] = useState("7")
   const[box8,setBox8] = useState("8")
   const[box9,setBox9] = useState("9")
+  const[winner,setWinner] = useState("")
 
   const buttonClick = (box) => {
 
@@ -56,6 +57,20 @@ export default function App() {
       setMark((mark == player1) ? player2 : player1)
     }
   }
+
+  useEffect(() => {
+    if((box1 == box2 && box2 == box3) || (box4 == box5 && box5 == box6) || (box7 == box8 && box8 == box9) || (box1 == box4 && box4 == box7) || (box2 == box5 && box5 == box8) || (box3 == box6 && box6 == box9) || (box1 == box5 && box5 == box9) || (box3 == box5 && box5 == box7)) {
+      if(mark == player1) {
+        setWinner("Player 2 wins")
+      }
+      else {
+        setWinner("Player 1 wins")
+      }
+    }
+    else if(box1 != "1" && box2 != "2" && box3 != "3" && box4 != "4" && box5 != "5" && box6 != "6" && box7 != "7" && box8 != "8" && box9 != "9"){
+      setWinner("Game is drawn")
+    }
+  })
 
   return (
     <View style={styles.container}>
