@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, Text, View, Pressable } from 'react-native';
+import { StyleSheet, Text, View, Pressable, Modal, Button } from 'react-native';
 
 export default function App() {
 
@@ -17,6 +17,7 @@ export default function App() {
   const[box8,setBox8] = useState("8")
   const[box9,setBox9] = useState("9")
   const[winner,setWinner] = useState("")
+  const[modalvisible, setModalvisible] = useState(false)
 
   const buttonClick = (box) => {
 
@@ -66,11 +67,28 @@ export default function App() {
       else {
         setWinner("Player 1 wins")
       }
+      setModalvisible(true)
     }
     else if(box1 != "1" && box2 != "2" && box3 != "3" && box4 != "4" && box5 != "5" && box6 != "6" && box7 != "7" && box8 != "8" && box9 != "9"){
       setWinner("Game is drawn")
+      setModalvisible(true)
     }
   })
+
+  const again = () => {
+    setMark("0")
+    setBox1("1")
+    setBox2("2")
+    setBox3("3")
+    setBox4("4")
+    setBox5("5")
+    setBox6("6")
+    setBox7("7")
+    setBox8("8")
+    setBox9("9")
+    setWinner("")
+    setModalvisible(false)
+  }
 
   return (
     <View style={styles.container}>
@@ -123,6 +141,12 @@ export default function App() {
         <Text style={{ fontSize: 40 }}>|</Text>
       </View>
       <Text style={{ fontSize: 30, marginTop: 30 }}>Player 1: 0</Text>
+      <Modal visible={modalvisible}>
+        <View style={{ alignItems:"center", alignSelf:"center", marginTop: 250, width: 150 }} >
+          <Text style={{ fontSize:20, marginBottom: 20 }}>{winner}</Text>
+          <Button title="Play Again" onPress={again.bind(this)} />
+        </View>
+      </Modal>
       <StatusBar style="auto" />
     </View>
   );
